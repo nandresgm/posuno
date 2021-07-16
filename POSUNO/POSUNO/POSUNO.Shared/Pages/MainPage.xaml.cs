@@ -60,6 +60,16 @@ namespace POSUNO.Pages
             return await confirmDialog.ShowAsync();
         }
 
+        private void CustomersNavigation_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            MyFrame.Navigate(typeof(CustomersPage));
+        }
+
+        private void ProductsNavigation_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            MyFrame.Navigate(typeof(ProductsPage));
+        }
+
 
     }
 }

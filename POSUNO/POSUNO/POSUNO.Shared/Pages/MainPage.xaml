@@ -22,12 +22,12 @@
         </StackPanel>
         <NavigationView Grid.Row="1" IsPaneOpen="false">
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Clientes">
+                <NavigationViewItem Content="Clientes" Tapped="CustomersNavigation_Tapped">
                     <NavigationViewItem.Icon>
                         <SymbolIcon Symbol="People"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Content="Productos">
+                <NavigationViewItem Content="Productos" Tapped="ProductsNavigation_Tapped">
                     <NavigationViewItem.Icon>
                         <SymbolIcon Symbol="SolidStar"/>
                     </NavigationViewItem.Icon>
@@ -41,6 +41,6 @@
                 </NavigationViewItem>
             </NavigationView.PaneFooter>
         </NavigationView>
-        
+        <Frame x:Name="MyFrame"/>
     </Grid>
 </Page>
