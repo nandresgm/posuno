@@ -35,7 +35,7 @@ namespace POSUNO.Pages
         {
             base.OnNavigatedTo(e);
             user = (User)e.Parameter;
-            WelcomeTextBlock.Text = $"Bienvenido: {user.FullName}";
+            WelcomeTextBlock.Text = $"Bienvenid@: {user.FullName}";
         }
 
         private async void Logout(object sender, TappedRoutedEventArgs e)

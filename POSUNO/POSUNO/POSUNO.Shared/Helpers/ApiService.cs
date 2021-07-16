@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace POSUNO.Helpers
 {
-    public class ApiService
-    {
+    public class ApiService 
+    { 
+
         public static async Task<Response> LoginAsync(LoginRequest model)
         {
             try
@@ -20,9 +21,10 @@ namespace POSUNO.Helpers
                 {
                     ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
                 };
+                string url = Settings.GetApiUrl();
                 HttpClient client = new HttpClient(handler)
                 {
-                    BaseAddress = new Uri("https://localhost:44368/")
+                    BaseAddress = new Uri(url)
                 };
                 HttpResponseMessage response = await client.PostAsync("api/Account/Login", content);
                 string result = await response.Content.ReadAsStringAsync();
