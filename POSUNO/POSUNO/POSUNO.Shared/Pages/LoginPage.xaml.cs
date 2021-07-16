@@ -1,4 +1,6 @@
-﻿using POSUNO.Helpers;
+﻿using POSUNO.Components;
+using POSUNO.Helpers;
+using POSUNO.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,8 +40,32 @@ namespace POSUNO.Pages
             {
                 return;
             }
-            MessageDialog messageDialog = new MessageDialog("Vamos bien", "ok");
-            messageDialog.ShowAsync();
+
+            Loader loader = new Loader("Por favor espere...");
+            loader.Show();
+            Response response = await ApiService.LoginAsync(new LoginRequest
+            {
+                Email = EmailTextBox.Text,
+                Password = PasswordPasswordBox.Password
+            });
+            loader.Close();
+            MessageDialog messageDialog;
+            if (!response.isSuccess)
+            {
+                messageDialog = new MessageDialog(response.Message, "Error");
+                await messageDialog.ShowAsync();
+                return;
+            }
+            User user = (User)response.Result;
+            if (user == null)
+            {
+                messageDialog = new MessageDialog("usuario o contraseñas incorrectos", "Error");
+                await messageDialog.ShowAsync();
+                return;
+            }
+
+            Frame.Navigate(typeof(MainPage), user);
+
         }
 
         private async Task<bool> ValidForm()
