@@ -24,12 +24,19 @@ namespace POSUNO.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private static MainPage _instance;
         public MainPage()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         public User user { get; set; }
+
+        public static MainPage GetInstance()
+        {
+            return _instance;
+        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

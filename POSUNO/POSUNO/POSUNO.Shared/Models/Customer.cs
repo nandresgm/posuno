@@ -15,5 +15,8 @@ namespace POSUNO.Models
         public string Email { get; set; }
         public bool IsActive { get; set; }
         public User User { get; set; }
+        public bool WasSaved { get; set; }
+        public bool IsEdit { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
     }
 }
